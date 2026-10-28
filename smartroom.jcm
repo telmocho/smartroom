@@ -14,12 +14,40 @@
 
 mas smartroom {
 
-    agent bob: sample_agent.asl {
+    /*agent bob: sample_agent.asl {
       focus: w.c1 
+    }*/
+
+    agent mario: personal_assistant.asl {
+      beliefs: preference(23)
+      focus: w.vm
     }
 
+    agent luiggi: personal_assistant.asl {
+      beliefs: preference(23)
+      focus: w.vm
+    }
+
+    agent bowser: personal_assistant.asl {
+      beliefs: preference(28)
+      focus: w.vm
+    }
+
+    agent rc: room_controller.asl {
+      focus: w.hvac
+      focus: w.vm::vm
+      goals: startVoting([21, 23, 27], 1000)
+      // goals: voting([21, 23, 27], 1000) // Se ha quitado para que no de problemas con la antigua forma de votar
+    }
+
+    /*agent rc: user_preferenes_agent.asl {
+      focus: w.hvac
+    }*/
+
     workspace w {
-      artifact c1: example.Counter(3) 
+      artifact c1: example.Counter(3)
+      artifact hvac: devices.HVAC(30)
+      artifact vm: devices.VotingMachine()
     }
 
     organisation o: org.xml {
