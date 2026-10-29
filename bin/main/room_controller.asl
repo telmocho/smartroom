@@ -16,7 +16,11 @@
     open(Options, Censo, Timeout);
     .print("-----------Inicia la votación-----------").
 
-censo(C) :- .all_names(C) & .my_name(rm) & .delete(rm, A, C). // Quiero borrar rm de todos los agentes (A) y guardar el resultado de la resta en C
+/*censo(C) :- .all_names(A) & .my_name(rm) & .delete(rm, A, C).
+    — La línea daba error por un typo: 'rm' en vez de 'rc'
+    — Además, C se usaba tanto para recibir all_names como para el resultado de borrar
+      en A (sin valor). */
+censo(C) :- .all_names(A) & .my_name(rc) & .delete(rc, A, C). // Quiero borrar rc de todos los agentes (A) y guardar el resultado de la resta en C
 
 +!voting(Options, Timeout) <-
     ConvId = 1;
