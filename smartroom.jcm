@@ -39,6 +39,7 @@ mas smartroom {
     agent rc: room_controller.asl {
       focus: w.hvac
       focus: vm::w.vm
+      focus: c1::w.c1
       goals: startVoting([21, 23, 27], 1000)
       // goals: voting([21, 23, 27], 1000) // Se ha quitado para que no de problemas con la antigua forma de votar
     }
