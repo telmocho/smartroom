@@ -32,6 +32,17 @@ censo(C) :- .all_names(A) & .my_name(rc) & .delete(rc, A, C). // Quiero borrar r
     !temperature(R). 
 // ------------------------------------------------------
 
+/* +c1::count(Value) <-
+    .print("El valor actual del contador es: ", Value).*/
+
+// También
++c1::tick <- // Aquí reacciono a la señal que manda inc de Counter
+    ?c1::count(C);
+    .print("El contador ahora vale: ", C).
+
++contador_actualizado(C): C>6 <-
+    .print("El Contador se ha actualizado: C = ", C).
+
 +!voting(Options, Timeout) <-
     ConvId = 1;
     !open_voting(ConvId, Options, Timeout);
@@ -70,14 +81,21 @@ winner(ConvId, T) :-
     // Falta startCooling;
     .print("La temperatura es ", T).
 
-+!temperature(T) : preference(T) <- // La exclamación es importante para que tenga un objetivo y no reaccione simplemente a cambios de temperatura
-    stopAirConditioner.
++!temperature(T) <- startCooling.
+
++temperature(T) : preference(T) <- stopAirConditioner.
 
 +!start : true
     <- .print("hello world.");
        .date(Y,M,D); .time(H,Min,Sec,MilSec); // get current date & time
+       // Ahora incremento
+       c1::inc; // c1=4
+       c1::inc_get(3, C);
+       +contador_actualizado(C);
        +started(Y,M,D,H,Min,Sec).             // add a new belief
        // +temperature(25).                      // add a new belief
+       
+
 
 { include("$jacamo/templates/common-cartago.asl") }
 { include("$jacamo/templates/common-moise.asl") }
