@@ -14,7 +14,7 @@
 
 // Cualquier cambio en el artefacto se ve reflejado en las creencias del agente.
 //
-//----------Con VotingMachine------------------
+//-----------------Con VotingMachine------------------
 //
 /*+status("close") <- // Este plan es una reacción al ver status de vm a close
     .print("La votación se ha cerrado"). 
@@ -26,9 +26,23 @@
 +vm::status("close") <- // Este plan es una reacción al ver status de vm a close
     .print("La votación se ha cerrado").
 
-+vm::status("open") <-
-    .print("La votación se ha abierto").
+// ACLARACIÓN: Lo que empieza por '?' es una consulta de mi estado mental
+//             Lo que no, es una operación directamente que hace cosas.
 
++vm::status("open") <-
+    // Mira en tus creencias y dime tu preferencia
+    ?preference(P);
+    // Como hago focus en vm, puedo consultar mi estado mental directamente para ver las options
+    ?vm::options(Options);
+    // Decidir voto reciclando el algoritmo que ya implementamos antes
+    ?my_vote(Options, P, Papeleta); // Variables en Mayúscula para evitar errores.
+    // Enviar voto
+    vm::vote(Papeleta);
+    .print("He votado: ", Papeleta).
+
+//--------------------------------------------------------------------
+
+// Esta versión (ya no se usa) no utiliza VotingMachine
 // Cómo reaccionar a la adición de esta creencia
 +open_voting(ConvId, Options, Timeout) <-
     ?preference(P); //Esto se resuelve de 2 maneras.

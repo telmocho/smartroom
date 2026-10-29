@@ -59,14 +59,14 @@ public class VotingMachine extends Artifact {
     this.timeout = timeout;
     defineObsProperty("timeout", this.timeout);
 
-    // TODO (Task 1): update the "status" observable property to "open" to announce that voting is open
+    // TODO (Task 2): update the "status" observable property to "open" to announce that voting is open
     getObsProperty("status").updateValue("open"); // Aquí cambio la propiedad status a open.
     // TODO (Task 3): uncomment this line after implementing the countfown internal operation
-    
+    execInternalOp("countdown");
     // execInternalOp("countdown");
   }
 
-  @OPERATION
+  @OPERATION // Esta la puedo invocar desde los votantes con vm::vote(Papeleta);
   public void vote(int vote) {
     // Checks that voting is open — and throws a failure if not
     if (getObsProperty("status").getValue().equals("close")) {
@@ -83,7 +83,7 @@ public class VotingMachine extends Artifact {
     }
   }
 
-  @OPERATION
+  @OPERATION // Las puedo invocar desde los agentes
   public void close() {
     int result = computeResult();
 
@@ -102,12 +102,14 @@ public class VotingMachine extends Artifact {
 
   // TODO (Task 3): implement an internal operation with a countdown. The internal operation should be
   // invoked at the end of the open() operation.
-  @INTERNAL_OPERATION
-  private void countdown() {
-    log("Voting is closing!");
-
+  @INTERNAL_OPERATION // Solo las puedo invocar desde el propio artefacto. Son PRIVADAS
+  private void countdown() { // Cierro la votación y recojo los votos una vez terminado el plazo
+    // log("Voting is closing!"); // Tiene más sentido ponerlo tras esperar (wait), no antes.
     // TODO (Task 3): Use the await_time method to wait for the specified timeout, then invoke the
     // close operation.
+    await_time(timeout);
+    log("Voting is closing!");
+    close();
   }
 
   // This method is used to convert datum from Jason to Java
