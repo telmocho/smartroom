@@ -35,7 +35,7 @@ public class VotingMachine extends Artifact {
 
   public void init() {
     // TODO (Task 1): define a status property with values open/closed
-    defineObsProperty("status", "closed");
+    defineObsProperty("status", "close");
   }
 
   @OPERATION

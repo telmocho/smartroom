@@ -13,9 +13,19 @@
 /* Plans */
 
 // Cualquier cambio en el artefacto se ve reflejado en las creencias del agente.
+//
 //----------Con VotingMachine------------------
-+vm::status("closed") <- // Este plan es una reacción al ver status de vm a closed
+//
+/*+status("close") <- // Este plan es una reacción al ver status de vm a close
     .print("La votación se ha cerrado"). 
++status("open") <-
+    .print("La votación se ha abierto").
+// La anterior manera de hacerlo    
+*/
+
++vm::status("close") <- // Este plan es una reacción al ver status de vm a close
+    .print("La votación se ha cerrado").
+
 +vm::status("open") <-
     .print("La votación se ha abierto").
 

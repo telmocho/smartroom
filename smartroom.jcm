@@ -20,22 +20,25 @@ mas smartroom {
 
     agent mario: personal_assistant.asl {
       beliefs: preference(23)
-      focus: w.vm
+      focus: vm::w.vm
+      // focus: w.vm //antes
     }
 
     agent luiggi: personal_assistant.asl {
       beliefs: preference(23)
-      focus: w.vm
+      focus: vm::w.vm
+      // focus: w.vm // antes
     }
 
     agent bowser: personal_assistant.asl {
       beliefs: preference(28)
-      focus: w.vm
+      focus: vm::w.vm
+      // focus: w.vm // antes
     }
 
     agent rc: room_controller.asl {
       focus: w.hvac
-      focus: w.vm::vm
+      focus: vm::w.vm
       goals: startVoting([21, 23, 27], 1000)
       // goals: voting([21, 23, 27], 1000) // Se ha quitado para que no de problemas con la antigua forma de votar
     }
