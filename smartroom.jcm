@@ -49,7 +49,7 @@ mas smartroom {
 
     workspace w {
       artifact c1: example.Counter(3)
-      artifact hvac: devices.HVAC(30)
+      artifact hvac: devices.HVAC(40)
       artifact vm: devices.VotingMachine()
     }
 

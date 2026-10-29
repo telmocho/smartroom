@@ -13,7 +13,7 @@
 // open([21,25,30], [mario, luigi, bowser], 4000)
 +!startVoting(Options, Timeout) <-
     ?censo(Censo);
-    open(Options, Censo, Timeout);
+    vm::open(Options, Censo, Timeout);
     .print("-----------Inicia la votación-----------").
 
 /*censo(C) :- .all_names(A) & .my_name(rm) & .delete(rm, A, C).
@@ -21,6 +21,16 @@
     — Además, C se usaba tanto para recibir all_names como para el resultado de borrar
       en A (sin valor). */
 censo(C) :- .all_names(A) & .my_name(rc) & .delete(rc, A, C). // Quiero borrar rc de todos los agentes (A) y guardar el resultado de la resta en C
+
+//Cuando resultado sea el que sea (r)
++vm::result(R) <-
+    // Muestro el resultado publicado por VotingMachine
+    .print("El resultado de la votación ha sido: ", R);
+    // Actualizo la preferencia para evitar conflicto
+    +preference(R);
+    // Actualizo el termostato con la temperatura más votada
+    !temperature(R). 
+// ------------------------------------------------------
 
 +!voting(Options, Timeout) <-
     ConvId = 1;
@@ -54,11 +64,13 @@ winner(ConvId, T) :-
 +vote(ConvId, Ballot)[source(Agent)] <-
     .print(Agent, " ha votado: ", Ballot).
 
-+temperature(T) : preference(P) & math.abs(T-P)>2 <-
+// Con VotingMachine, esta versión da error porque actualiza con la preferencia, no con la temperatura más votada.
++!temperature(T) : preference(P) & math.abs(T-P)>2 <- 
     !temperature(P);
+    // Falta startCooling;
     .print("La temperatura es ", T).
 
-+temperature(T) : preference(T) <-
++!temperature(T) : preference(T) <- // La exclamación es importante para que tenga un objetivo y no reaccione simplemente a cambios de temperatura
     stopAirConditioner.
 
 +!start : true
