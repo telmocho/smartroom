@@ -17,7 +17,9 @@ class TemperatureSensorPanel extends JFrame {
 	private JSlider temp;
 
 	public TemperatureSensorPanel(HVAC hvac, int startTemp){
+		// Título de la ventana
 		setTitle("..:: Temperature Sensor ::..");
+		// Tamaño de la ventana
 		setSize(400,120);
 
 		JPanel mainPanel = new JPanel();
@@ -31,7 +33,7 @@ class TemperatureSensorPanel extends JFrame {
 		temperature1.setLayout(new BoxLayout(temperature1, BoxLayout.X_AXIS));
 
 		tempValue = new JTextField(5);
-		tempValue.setText(""+startTemp);
+		tempValue.setText(""+startTemp); // con esta concatenación, fuerzo casting de integer a string
 		tempValue.setSize(100, 30);
 		tempValue.setMinimumSize(tempValue.getSize());
 		tempValue.setMaximumSize(tempValue.getSize());

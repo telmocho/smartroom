@@ -40,6 +40,7 @@ mas smartroom {
       focus: w.hvac
       focus: vm::w.vm
       focus: c1::w.c1
+      focus: gui::w.consola
       goals: startVoting([21, 23, 27], 1000)
       // goals: voting([21, 23, 27], 1000) // Se ha quitado para que no de problemas con la antigua forma de votar
     }
@@ -52,6 +53,7 @@ mas smartroom {
       artifact c1: example.Counter(3)
       artifact hvac: devices.HVAC(40)
       artifact vm: devices.VotingMachine()
+      artifact consola: gui.GUIConsole("Consola de depuración")
     }
 
     organisation o: org.xml {

@@ -81,9 +81,19 @@ winner(ConvId, T) :-
     // Falta startCooling;
     .print("La temperatura es ", T).
 
-+!temperature(T) <- startCooling.
++!temperature(T): temperature(P) & T<P <-
+    .concat("[StartCooling] La temperatura es ", P, " y el objetivo ", T, Msg);
+    gui::printMsg(Msg);
+    startCooling;
+    .print("[StartCooling] La temperatura es ", P, " y el objetivo ", T).
 
-+temperature(T) : preference(T) <- stopAirConditioner.
++!temperature(T): temperature(P) & T>P <-
+    .concat("[StartCooling] La temperatura es ", P, " y el objetivo ", T, Msg);
+    gui::printMsg(Msg);
+    startHeating;
+    .print("[StartHeating] La temperatura es ", P, " y el objetivo ", T).
+
++temperature(T): temperature(P) & T==P <- stopAirConditioner.
 
 +!start : true
     <- .print("hello world.");
