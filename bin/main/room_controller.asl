@@ -29,7 +29,7 @@ censo(C) :- .all_names(A) & .my_name(rc) & .delete(rc, A, C). // Quiero borrar r
     // Actualizo la preferencia para evitar conflicto
     +preference(R);
     // Actualizo el termostato con la temperatura más votada
-    !temperature(R). 
+    !temp(R). 
 // ------------------------------------------------------
 
 /* +c1::count(Value) <-
@@ -81,19 +81,19 @@ winner(ConvId, T) :-
     // Falta startCooling;
     .print("La temperatura es ", T).
 
-+!temperature(T): temperature(P) & T<P <-
++!temp(T): temperature(P) & T<P <-
     .concat("[StartCooling] La temperatura es ", P, " y el objetivo ", T, Msg);
     gui::printMsg(Msg);
     startCooling;
     .print("[StartCooling] La temperatura es ", P, " y el objetivo ", T).
 
-+!temperature(T): temperature(P) & T>P <-
++!temp(T): temperature(P) & T>P <-
     .concat("[StartCooling] La temperatura es ", P, " y el objetivo ", T, Msg);
     gui::printMsg(Msg);
     startHeating;
     .print("[StartHeating] La temperatura es ", P, " y el objetivo ", T).
 
-+temperature(T): temperature(P) & T==P <- stopAirConditioner.
++temperature(T): preference(P) & T==P <- stopAirConditioner.
 
 +!start : true
     <- .print("hello world.");
