@@ -37,11 +37,9 @@ mas smartroom {
     }
 
     agent rc: room_controller.asl {
-      focus: w.hvac
-      focus: vm::w.vm
-      focus: c1::w.c1
-      focus: gui::w.consola
-      goals: startVoting([21, 23, 27], 1000)
+      focus: w.hvac, vm::w.vm, c1::w.c1, gui::w.consola
+      beliefs: options([21, 23, 27], deadline(4000))
+      // goals: startVoting([21, 23, 27], 1000)
       // goals: voting([21, 23, 27], 1000) // Se ha quitado para que no de problemas con la antigua forma de votar
     }
 
@@ -57,9 +55,11 @@ mas smartroom {
     }
 
     organisation o: org.xml {
-      group g1 : group1 {
-        players: bob role1
+      group r1 : room {
+        players: mario assistant, luiggi assistant, bowser assistant, rc controller
+        responsible-for: temp_r1
       }
+      scheme temp_r1 : decide_temp
     }
 
     

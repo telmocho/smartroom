@@ -9,13 +9,39 @@
 
 /* Plans */
 
+//----- Con Organización
++!census[scheme(temp_r1)] <-
+    .print("Haciendo el censo de los votantes");
+    // .findall(tuplas, consulta, resultado)
+    // play(agente, rol, grupo)
+    .findall(A, play(A, assistant, _), Censo); // Consulto en las creencias del agente todos 
+                                               // los agentes que tienen el rol de assistant en cualquier grupo (_) 
+    +censo_actual(Censo); // Guardo el resultado en mis creencias
+    .print("Censo de votantes: ", Censo).
+
++!open_voting[scheme(temp_r1)]  <-
+    ?censo_actual(Censo); // Guardo el resultado en mis creencias
+    ?deadline(Deadline);
+    ?option(Options);
+    open(Options, Censo, Deadline);
+    .print("Votación iniciada.").
+
++!close_voting[scheme(temp_r1)] <-
+    close;
+    ?vm::result(Result);
+    .print("Votación cerrada. Resultado: ", Result);
+    // Actualizo la preferencia para evitar conflicto
+    +preference(Result);
+    // Actualizo el termostato con la temperatura más votada
+    !temp(Result).
+
 // -------------------Con VotingMachine------------------
 // open([21,25,30], [mario, luigi, bowser], 4000)
-+!startVoting(Options, Timeout) <-
+/*+!startVoting(Options, Timeout) <-
     ?censo(Censo);
     vm::open(Options, Censo, Timeout);
     .print("-----------Inicia la votación-----------").
-
+*/
 /*censo(C) :- .all_names(A) & .my_name(rm) & .delete(rm, A, C).
     — La línea daba error por un typo: 'rm' en vez de 'rc'
     — Además, C se usaba tanto para recibir all_names como para el resultado de borrar
@@ -23,13 +49,13 @@
 censo(C) :- .all_names(A) & .my_name(rc) & .delete(rc, A, C). // Quiero borrar rc de todos los agentes (A) y guardar el resultado de la resta en C
 
 //Cuando resultado sea el que sea (r)
-+vm::result(R) <-
+/*+vm::result(R) <-
     // Muestro el resultado publicado por VotingMachine
     .print("El resultado de la votación ha sido: ", R);
     // Actualizo la preferencia para evitar conflicto
     +preference(R);
     // Actualizo el termostato con la temperatura más votada
-    !temp(R). 
+    !temp(R). */
 // ------------------------------------------------------
 
 /* +c1::count(Value) <-
@@ -111,4 +137,5 @@ winner(ConvId, T) :-
 { include("$jacamo/templates/common-moise.asl") }
 
 // uncomment the include below to have an agent compliant with its organisation
-//{ include("$moise/asl/org-obedient.asl") }
+{ include("$moise/asl/org-obedient.asl") }
+// Esta línea hace que el agente sea obediente a nuestra organización.

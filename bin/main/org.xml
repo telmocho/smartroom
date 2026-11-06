@@ -14,42 +14,44 @@
 <structural-specification>
 
 <role-definitions>
-    <role id="role1" />
-    <role id="role2" />
+    <role id="controller" />
+    <role id="assistant" />
 </role-definitions>
 
-<group-specification id="group1">
+<group-specification id="room">
     <roles>
-        <role id="role1" min="1" max="1"/>
-        <role id="role2" min="1" max="1"/>
+        <role id="controller" min="1" max="1"/>
+        <role id="assistant" min="1" max="5"/>
     </roles>
 
-    <links>
-       <link from="role1" to="role2" type="authority"     scope="intra-group" bi-dir="false"/>
-       <link from="role2" to="role1" type="communication" scope="intra-group" bi-dir="false"/>
-    </links>
+    <!--<links>
+       <link from="controller" to="assistant" type="authority"     scope="intra-group" bi-dir="false"/>
+       <link from="assistant" to="controller" type="communication" scope="intra-group" bi-dir="false"/>
+    </links>-->
     <formation-constraints>
-       <compatibility from="role1" to="role2" />
+       <!-- <compatibility from="controller" to="assistant" /> Esto no tiene sentido porque no se puede ser controller y assistant a la vez -->
     </formation-constraints>
 </group-specification>
 </structural-specification>
 
-<functional-specification>
-    <scheme id="scheme1">
-        <goal id="goal1">
+<functional-specification> <!-- Aquí describimos el esquema de funcionamiento de la organización, es decir, los planes y misiones que se pueden ejecutar -->
+    <scheme id="decide_temp">
+        <goal id="voting">
             <plan operator="sequence">
-                <goal id="goal2"    ttf="20 minutes" ds="description goal2"/>
-                <goal id="goal3"/>
-                <goal id="goal4"/>
+                <goal id="census" />
+                <goal id="open_voting"    ttf="4 seconds" ds="Apertura de la votación"/>
+                <goal id="vote" ds="Emitir voto"/>
+                <goal id="close_voting" ds="Cerrar la votación"/>
             </plan>
         </goal>
 
-        <mission id="mission1" min="1" max="1">
-            <goal id="goal2"/>
-            <goal id="goal4"/>
+        <mission id="mVoteController" min="1" max="1"> <!-- Misión de controlar la votación, los ids de misiones empiezan por m -->
+            <goal id="census"/>
+            <goal id="open_voting"/>
+            <goal id="close_voting"/>
         </mission>
-        <mission id="mission2" min="1" max="1">
-            <goal id="goal3"/>
+        <mission id="mVote" min="1" max="5"> <!-- Misión de votar: la deben cumplir entre 1 y 5 agentes -->
+            <goal id="vote"/>
         </mission>
     </scheme>
 </functional-specification>
@@ -73,7 +75,9 @@
     </properties-->
 
     <!-- the norms of the application -->
-    <norm id="norm1" type="obligation" role="role2" mission="mission1"/>
+    <!-- Aquí obligo a agentes a cumplir misiones-->
+    <norm id="norm1" type="obligation" role="controller" mission="mVoteController"/>
+    <norm id="norm2" type="obligation" role="assistant"  mission="mVote"/>
 </normative-specification>
 
 </organisational-specification>
