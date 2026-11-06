@@ -11,6 +11,17 @@
 !start.
 
 /* Plans */
+//----- Con Organización
++!vote[scheme(_)] <-
+    ?preference(P);
+    ?vm::options(Options);
+    .sort(Options, SortedOptions);
+    ?my_vote(SortedOptions, P, Papeleta);
+    // Enviar voto
+    vm::vote(Papeleta);
+    .print("He votado: ", Papeleta).
+
+
 
 // Cualquier cambio en el artefacto se ve reflejado en las creencias del agente.
 //
@@ -23,13 +34,13 @@
 // La anterior manera de hacerlo    
 */
 
-+vm::status("close") <- // Este plan es una reacción al ver status de vm a close
-    .print("La votación se ha cerrado").
+/*+vm::status("close") <- // Este plan es una reacción al ver status de vm a close
+    .print("La votación se ha cerrado").*/
 
 // ACLARACIÓN: Lo que empieza por '?' es una consulta de mi estado mental
 //             Lo que no, es una operación directamente que hace cosas.
 
-+vm::status("open") <-
+/*+vm::status("open") <-
     // Mira en tus creencias y dime tu preferencia
     ?preference(P);
     // Como hago focus en vm, puedo consultar mi estado mental directamente para ver las options
@@ -38,7 +49,7 @@
     ?my_vote(Options, P, Papeleta); // Variables en Mayúscula para evitar errores.
     // Enviar voto
     vm::vote(Papeleta);
-    .print("He votado: ", Papeleta).
+    .print("He votado: ", Papeleta).*/
 
 //--------------------------------------------------------------------
 
@@ -66,4 +77,5 @@ my_vote([H], _, H).
 { include("$jacamo/templates/common-moise.asl") }
 
 // uncomment the include below to have an agent compliant with its organisation
-//{ include("$moise/asl/org-obedient.asl") }
+{ include("$moise/asl/org-obedient.asl") }
+// Esta línea hace que el agente sea obediente a nuestra organización.
