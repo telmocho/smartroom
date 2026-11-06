@@ -10,6 +10,12 @@
 /* Plans */
 
 //----- Con Organización
+
++permission(Ag, Norm, committed(Ag, Mission, Scheme), Deadline)[artifact_id(ArtId), workspace(_, W)]
+    : .my_name(Ag)
+    <- .print("Agente ", Ag, " tiene permiso para cumplir la misión ", Mission, " con el esquema ", Scheme);
+    commitMission(Mission)[artifact_name(Scheme), wid(W)].
+
 +!census[scheme(temp_r1)] <-
     .print("Haciendo el censo de los votantes");
     // .findall(tuplas, consulta, resultado)
@@ -21,19 +27,39 @@
 
 +!open_voting[scheme(temp_r1)]  <-
     ?censo_actual(Censo); // Guardo el resultado en mis creencias
-    ?deadline(Deadline);
-    ?option(Options);
-    open(Options, Censo, Deadline);
+    ?options(Options, deadline(Deadline));
+    vm::open(Options, Censo, Deadline);
     .print("Votación iniciada.").
 
 +!close_voting[scheme(temp_r1)] <-
-    close;
+    vm::close;
     ?vm::result(Result);
     .print("Votación cerrada. Resultado: ", Result);
     // Actualizo la preferencia para evitar conflicto
     +preference(Result);
     // Actualizo el termostato con la temperatura más votada
-    !temp(Result).
+    !temp(Result);
+    !quiero_cafe.
+
++!quiero_cafe: vm::status("close") <- // Este plan es una reacción al ver status de vm a close
+    createScheme(schCafe, hacer_cafe, SchId); // Los identificadores siempre en minúsculas; las variables empiezan por mayúscula.
+    addScheme(schCafe);
+    .print("Vamos a hacer el café.").
+
++!echar_agua <-
+    .print("Echando agua al café.").
+
++!echar_cafe <-
+    .print("Echando café.").  
+
++!calentar_cafe <-
+    .print("Calentando el café.").
+
++!servir_cafe <-
+    .print("Aquí tienes tu café con pastitias.").
+
++!beber_cafe <-
+    .print("Qué rico mi cafe!").
 
 // -------------------Con VotingMachine------------------
 // open([21,25,30], [mario, luigi, bowser], 4000)
@@ -80,6 +106,7 @@ censo(C) :- .all_names(A) & .my_name(rc) & .delete(rc, A, C). // Quiero borrar r
     //?preference(P);
     //!temperature(P).
 
+/*
 +!open_voting(ConvId, Options, Timeout) <-
     // Aquí no quiero un .send(), sino un broadcast a todos los votantes.
     // tell responde a una creencia
@@ -89,7 +116,7 @@ censo(C) :- .all_names(A) & .my_name(rc) & .delete(rc, A, C). // Quiero borrar r
 +!close_voting(ConvId, Result) <-
     ?winner(ConvId, Result);
     .print("Votación terminada. Candidato ganador: ", Result).
-
+*/
 winner(ConvId, T) :- 
     .findall(t(C, V), vote(Id, V) & .count(vote(Id, V)[source(_)], C), LV)
     & .print("Votes: ", LV) & .max(LV, t(_, T)).

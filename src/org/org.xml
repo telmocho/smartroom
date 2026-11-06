@@ -35,6 +35,30 @@
 </structural-specification>
 
 <functional-specification> <!-- Aquí describimos el esquema de funcionamiento de la organización, es decir, los planes y misiones que se pueden ejecutar -->
+    
+    <scheme id="hacer_cafe">
+        <goal id="haciendo_cafe">
+            <plan operator="sequence">
+                <goal id="echar_agua" />
+                <goal id="echar_cafe" />
+                <goal id="calentar_cafe" />
+                <goal id="servir_cafe" />
+                <goal id="beber_cafe" />
+            </plan>
+        </goal>
+
+        <mission id="mPrepararcafe" min="1" max="1"> <!-- Misión de preparar café, la debe cumplir un agente -->
+            <goal id="echar_agua" />
+            <goal id="echar_cafe" />
+            <goal id="calentar_cafe" />
+        </mission>
+
+        <mission id="mServircafe" min="1"> <!-- Misión de servir y beber café, la debe cumplir al menos un agente -->
+            <goal id="servir_cafe" />
+            <goal id="beber_cafe" />
+        </mission>
+    </scheme>
+
     <scheme id="decide_temp">
         <goal id="voting">
             <plan operator="sequence">
@@ -78,6 +102,10 @@
     <!-- Aquí obligo a agentes a cumplir misiones-->
     <norm id="norm1" type="obligation" role="controller" mission="mVoteController"/>
     <norm id="norm2" type="obligation" role="assistant"  mission="mVote"/>
+
+    <norm id="norm3" type="permission" role="controller" mission="mPrepararcafe"/>
+    <norm id="norm4" type="obligation" role="assistant" mission="mServircafe"/>
+    <norm id="norm5" type="obligation" role="controller" mission="mServircafe"/>
 </normative-specification>
 
 </organisational-specification>

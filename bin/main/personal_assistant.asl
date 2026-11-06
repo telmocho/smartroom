@@ -21,6 +21,9 @@
     vm::vote(Papeleta);
     .print("He votado: ", Papeleta).
 
++!servir_cafe <- .print("Aquí tienes tu café con pastitias.").
+
++!beber_cafe <- .print("Qué rico mi cafe!").
 
 
 // Cualquier cambio en el artefacto se ve reflejado en las creencias del agente.
