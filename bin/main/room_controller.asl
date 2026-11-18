@@ -1,6 +1,9 @@
 // Agent bob in project smartroom
 
 /* Initial beliefs and rules */
+preference(24).
+term("queliceros", "Apéndice de los arácnidos").
+
 
 /* Initial goals */
 
@@ -8,6 +11,33 @@
 
 
 /* Plans */
+
+//----- Broker ------´
++!registro <- // Con este plan, digo que este agente sabe hacer lo siguiente.
+    !suscripcion;
+    .df_register("dictionary(es-ES)");
+    !traducir. // Registramos el servicio en las páginas amarilas
+
++!suscripcion <-
+    .df_subscribe("dictionary(es-ES)"). 
+
++!traducir <-
+    .df_search("dictionary(es-ES)", L); // L: lista de agentes que cumplen con el servicio. Se han buscado en las páginas amarillas
+    .nth(0, L, A); // A: primer agente de la lista
+    .print(A, "sabe hacer dictionary(es-ES)").
+
++provider(Agente, Servicio) <- // Me llega cuando un agente se registra como que sabe hacer un servicio
+    .print("El agente ", Agente, " sabe hacer el servicio ", Servicio);
+    .send(Agente, tell, term("queliceros")).
+
+// Con ask, me ahorraría la parte de abajo.
+
++term(X)[source(A)] <- 
+    ?term(X, Y);
+    .send(A, tell, term(X, Y)).
+
++term(X, Y) <-
+    .print(X, " significa ", Y).
 
 //----- Con Organización
 
@@ -155,6 +185,7 @@ winner(ConvId, T) :-
        c1::inc; // c1=4
        c1::inc_get(3, C);
        +contador_actualizado(C);
+       !registro;
        +started(Y,M,D,H,Min,Sec).             // add a new belief
        // +temperature(25).                      // add a new belief
        
