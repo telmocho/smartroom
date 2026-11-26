@@ -178,16 +178,51 @@ winner(ConvId, T) :-
 
 +temperature(T): preference(P) & T==P <- stopAirConditioner.
 
-+!start : true
-    <- .print("hello world.");
-       .date(Y,M,D); .time(H,Min,Sec,MilSec); // get current date & time
-       // Ahora incremento
-       c1::inc; // c1=4
-       c1::inc_get(3, C);
-       +contador_actualizado(C);
-       !registro;
-       +started(Y,M,D,H,Min,Sec).             // add a new belief
-       // +temperature(25).                      // add a new belief
++!individualsQueryTest <-
+   getIndividualsOfClass(
+      "http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Alumno",
+      Estudiantes
+   );
+   .print(" -- Estudiantes ---");
+   !print_list(Estudiantes).
+
++!print_list([]).
+
++!print_list([H|T]) <-
+    .print(H);
+    !print_list(T).
+
+
++!objectProperyQueryTest <-
+    ont::getObjectPropertyValues(
+        "http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#MGM",
+        "http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#estaInscritoEn",
+        Matricula
+    );
+    .print("Matrícula: ", Matricula).
+
++!dataPropertyQueryTest <-
+    ont::getDataPropertyValues(
+        "http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#MGM",
+        "http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneNombrePersona",
+        Values
+    );
+    .print("Nombre: ", Values).
+
++!start : true <- 
+    ont::loadOntology("ontologia/ontologia.rdf");
+    !individualsQueryTest;
+    !objectProperyQueryTest;
+    !dataPropertyQueryTest;
+    .print("hello world.");
+    .date(Y,M,D); .time(H,Min,Sec,MilSec); // get current date & time
+    // Ahora incremento
+    c1::inc; // c1=4
+    c1::inc_get(3, C);
+    +contador_actualizado(C);
+    !registro;
+    +started(Y,M,D,H,Min,Sec).             // add a new belief
+    // +temperature(25).                      // add a new belief
        
 
 
@@ -197,3 +232,4 @@ winner(ConvId, T) :-
 // uncomment the include below to have an agent compliant with its organisation
 { include("$moise/asl/org-obedient.asl") }
 // Esta línea hace que el agente sea obediente a nuestra organización.
+ 
