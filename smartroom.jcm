@@ -35,9 +35,9 @@ mas smartroom {
       focus: vm::w.vm
       // focus: w.vm // antes
     }
-
+ 
     agent rc: room_controller.asl {
-      focus: w.hvac, vm::w.vm, c1::w.c1, gui::w.consola
+      focus: w.hvac, vm::w.vm, c1::w.c1, gui::w.consola, ont:: w.ont
       beliefs: options([21, 23, 27], deadline(4000))
       // goals: startVoting([21, 23, 27], 1000)
       // goals: voting([21, 23, 27], 1000) // Se ha quitado para que no de problemas con la antigua forma de votar
@@ -48,6 +48,7 @@ mas smartroom {
     }*/
 
     workspace w {
+      artifact ont: ontology.OntologyArtifact()
       artifact c1: example.Counter(3)
       artifact hvac: devices.HVAC(40)
       artifact vm: devices.VotingMachine()

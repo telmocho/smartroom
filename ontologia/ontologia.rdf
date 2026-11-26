@@ -1,0 +1,539 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/"
+     xml:base="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:uclm-sma="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#esProfesorTitularDe -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#esProfesorTitularDe">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Profesor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Materia"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#estaInscritoEn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#estaInscritoEn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Alumno"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Materia"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#solicitaAtencion -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#solicitaAtencion">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Alumno"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#JefeDepartamento"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#solicitaRegistroPT -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#solicitaRegistroPT">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Alumno"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Coordinador"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tomaClaseCon -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tomaClaseCon">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Alumno"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Profesor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneClaveMateria -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneClaveMateria">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Materia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneCreditosMateria -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneCreditosMateria">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Materia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneEdadPersona -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneEdadPersona">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Persona"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneNombreMateria -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneNombreMateria">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Materia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneNombrePersona -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneNombrePersona">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Persona"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tienePesoPersona -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tienePesoPersona">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Persona"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneSexoPersona -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneSexoPersona">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Persona"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Academico -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Academico">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Empleado"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Administrativo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Administrativo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Empleado"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Alumno -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Alumno">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Persona"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Coordinador -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Coordinador">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Academico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Empleado -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Empleado">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Persona"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#JefeDepartamento -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#JefeDepartamento">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Academico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Materia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Materia"/>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Persona -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Persona"/>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Profesor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Profesor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Academico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Visitante -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Visitante">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Persona"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#MGM -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#MGM">
+        <rdf:type rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Alumno"/>
+        <uclm-sma:estaInscritoEn rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#SMA"/>
+        <uclm-sma:tieneEdadPersona rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</uclm-sma:tieneEdadPersona>
+        <uclm-sma:tieneNombrePersona>Marta Gonzalez Martinez</uclm-sma:tieneNombrePersona>
+        <uclm-sma:tienePesoPersona rdf:datatype="http://www.w3.org/2001/XMLSchema#float">55.0</uclm-sma:tienePesoPersona>
+        <uclm-sma:tieneSexoPersona>Femenino</uclm-sma:tieneSexoPersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#NPT -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#NPT">
+        <rdf:type rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Alumno"/>
+        <uclm-sma:tieneEdadPersona rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">21</uclm-sma:tieneEdadPersona>
+        <uclm-sma:tieneNombrePersona>Nicolas Perez Torres</uclm-sma:tieneNombrePersona>
+        <uclm-sma:tienePesoPersona rdf:datatype="http://www.w3.org/2001/XMLSchema#float">76.5</uclm-sma:tienePesoPersona>
+        <uclm-sma:tieneSexoPersona>Masculino</uclm-sma:tieneSexoPersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#PL -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#PL">
+        <rdf:type rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Materia"/>
+        <uclm-sma:tieneClaveMateria>MAT002</uclm-sma:tieneClaveMateria>
+        <uclm-sma:tieneCreditosMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#float">6.0</uclm-sma:tieneCreditosMateria>
+        <uclm-sma:tieneNombreMateria>Procesadores de Lenguajes</uclm-sma:tieneNombreMateria>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#SMA -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#SMA">
+        <rdf:type rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Materia"/>
+        <uclm-sma:tieneClaveMateria>MAT001</uclm-sma:tieneClaveMateria>
+        <uclm-sma:tieneCreditosMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#float">6.0</uclm-sma:tieneCreditosMateria>
+        <uclm-sma:tieneNombreMateria>Sistemas Multiagentes</uclm-sma:tieneNombreMateria>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#VMJ -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#VMJ">
+        <rdf:type rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Profesor"/>
+        <uclm-sma:esProfesorTitularDe rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#SMA"/>
+        <uclm-sma:tieneEdadPersona rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</uclm-sma:tieneEdadPersona>
+        <uclm-sma:tieneNombrePersona>Victor Manuel Lopez Jaquero</uclm-sma:tieneNombrePersona>
+        <uclm-sma:tienePesoPersona rdf:datatype="http://www.w3.org/2001/XMLSchema#float">78.5</uclm-sma:tienePesoPersona>
+        <uclm-sma:tieneSexoPersona>Masculino</uclm-sma:tieneSexoPersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/p">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/a">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/m">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/nombreP">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/nombreA">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/nombreM">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>S2</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Profesor"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Alumno"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/a"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Materia"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/m"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#esProfesorTitularDe"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/p"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/m"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#estaInscritoEn"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/a"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/m"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneNombrePersona"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/p"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/nombreP"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneNombrePersona"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/a"/>
+                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/nombreA"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneNombreMateria"/>
+                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/m"/>
+                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/nombreM"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
+                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                        <swrl:builtin rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select"/>
+                        <swrl:arguments rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/nombreP"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/nombreA"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/nombreM"/>
+                        </swrl:arguments>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>S1</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#Persona"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/p"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneNombrePersona"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/p"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/nombreP"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma#tieneSexoPersona"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/p"/>
+                                        <swrl:argument2>Femenino</swrl:argument2>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                        <swrl:builtin rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select"/>
+                        <swrl:arguments rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/p"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/garci/ontologies/2026/9/uclm-sma/nombreP"/>
+                        </swrl:arguments>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
